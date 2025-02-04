@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input
+        type="text"
+        name="nombre"
+        id="nombre"
+        placeholder="Ingrese nombre"
+      />
+      <input type="number" name="edad" id="edad" placeholder="Ingrese edad" />
+      <button type="submit">Enviar...</button>
+    </form>
+
+    {% if objeto %}
+    <h1>{{ saludo }}</h1>
+    <h1>{{ objeto.nombre }}</h1>
+    <h2>{{ objeto.edad }}</h2>
+    <p>{{ objeto.descripcion }}</p>
+    {% endif %}
+  </body>
+</html>

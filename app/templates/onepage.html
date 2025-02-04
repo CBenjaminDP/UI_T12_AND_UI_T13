@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col">
+        <div class="row">
+          <div class="col-6 mt-5">
+            <h1>Bienvenido a mi one page :D</h1>
+            <br />
+            <p>este sitio carga tarjetas de bootstrap dinamicamente</p>
+            <br />
+          </div>
+          <div class="col-6 mt-5">
+            <img
+              src="https://www.xtrafondos.com/wallpapers/spider-man-ps5-juego-11079.jpg"
+              alt="img"
+              class="img-fluid"
+            />
+          </div>
+        </div>
+        <div class="row mt-5" id="tarjetas">
+          <div class="card col-4">
+            <div class="card-body">
+              <h5 class="card-title">Titulo estatico</h5>
+              <p class="card-text">
+                Texto estatico dentro de la card Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Fuga beatae ducimus voluptate
+                quasi nihil ullam ab, odit quae fugit deleniti harum dolore
+                perspiciatis reprehenderit, omnis commodi nisi dolor minus ut.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                voluptates illo officiis, incidunt ipsum magni ex nostrum
+                voluptas ipsam assumenda alias ea explicabo ratione perferendis!
+                Cum illo natus exercitationem est. Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quos veritatis aperiam quod harum,
+                obcaecati vel impedit quibusdam nobis adipisci officia, corrupti
+                consectetur. Inventore eos blanditiis, quibusdam quos reiciendis
+                earum nemo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function loadCards(title, text) {
+        var cards = document.createElement("div");
+        cards.setAttribute("class", "card col-4");
+
+        var body = document.createElement("div");
+        body.setAttribute("class", "card-body");
+
+        var h5 = document.createElement("h5");
+        h5.setAttribute("class", "card-title");
+        h5.innerHTML = title;
+
+        var p = document.createElement("p");
+        p.setAttribute("class", "card-text");
+        p.innerHTML = text;
+
+        body.appendChild(h5);
+        body.appendChild(p);
+        cards.appendChild(body);
+
+        document.getElementById("tarjetas").appendChild(cards);
+      }
+
+      let i = 1;
+
+      window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          for (let index = 0; index < 5; index++) {
+            if (i > 100) {
+              break;
+            }
+            var object = {
+              title: `Titulo dinamico de la card ${i}`,
+              text: `Texto dinamico de la card ${i}`,
+            };
+            loadCards(object.title, object.text);
+            i++;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
