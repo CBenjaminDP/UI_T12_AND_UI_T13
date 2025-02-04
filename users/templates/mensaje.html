@@ -1,42 +1,78 @@
-<!-- Modal -->
-<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="messageModalLabel">Mensaje</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <p id="modalMessage"></p>
-                <img id="modalImage" class="img-fluid" style="display: none" alt="Imagen del mensaje" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Cerrar
-                </button>
-            </div>
-        </div>
+<div
+  class="modal fade"
+  id="messageModal"
+  tabindex="-1"
+  aria-labelledby="messageModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-success text-white border-0">
+        <h5 class="modal-title" id="messageModalLabel">Mensaje</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Cerrar"
+        ></button>
+      </div>
+      <div
+        class="modal-body text-center justify-content-center d-flex flex-column"
+      >
+        <p id="modalMessage" class="mb-3"></p>
+        <img
+          id="modalImage"
+          class="img-fluid rounded"
+          style="display: none"
+          alt="Imagen del mensaje"
+        />
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const message = JSON.parse("{{ message|safe|escapejs }}");
-        if (message) {
-            document.getElementById(
-                "modalMessage"
-            ).innerText = `[${message.type.toUpperCase()}] Código ${message.code}: ${message.message
-            }`;
-
-            if (message.img) {
-                const imgElement = document.getElementById("modalImage");
-                imgElement.src = message.img;
-                imgElement.style.display = "block";
-            }
-
-            const modal = new bootstrap.Modal(
-                document.getElementById("messageModal")
-            );
-            modal.show();
-        }
-    });
+  document.addEventListener("DOMContentLoaded", function () {
+    const message = JSON.parse("{{ message|escapejs }}");
+    if (message) {
+      document.getElementById(
+        "modalMessage"
+      ).innerText = `[${message.tipo.toUpperCase()}] Código ${
+        message.codigo
+      }: ${message.mensaje}`;
+      if (message.imagen) {
+        const imgElement = document.getElementById("modalImage");
+        imgElement.src = message.imagen;
+        imgElement.style.display = "block";
+      }
+      const modal = new bootstrap.Modal(
+        document.getElementById("messageModal")
+      );
+      modal.show();
+    }
+  });
 </script>
+
+<style>
+  .modal-content {
+    border-radius: 10px;
+  }
+  .modal-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .modal-footer {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  #modalImage {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    margin-top: 10px;
+  }
+</style>

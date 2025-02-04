@@ -1,76 +1,25 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Error 500 - Error del Servidor</title>
-    <style>
-      body {
-        font-family: "Roboto", sans-serif;
-        text-align: center;
-        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-        color: #333;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-
-      h1 {
-        font-size: 7em;
-        color: #e74c3c;
-        margin: 0;
-      }
-
-      p {
-        font-size: 1.5em;
-        margin: 20px 0;
-      }
-
-      img {
-        max-width: 30%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      a {
-        display: inline-block;
-        margin-top: 30px;
-        padding: 15px 30px;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        font-size: 1.2em;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      a:hover {
-        background-color: #0056b3;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        transform: scale(1.05);
-      }
-
-      footer {
-        position: absolute;
-        bottom: 20px;
-        font-size: 0.9em;
-        color: #6c757d;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Error 500</h1>
-    <p>Lo sentimos, ha ocurrido un error en el servidor.</p>
-    <img
-      src="https://cdn.urbantecno.com/urbantecno/2023/10/estas-son-algunas-acciones-que-puedes-probar-para-intentar-solucionar-el-error-500.jpg"
-      alt="Error 500"
-    />
-    <a href="/">Volver a la página principal</a>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 500</title>
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <h1 style="font-weight: bold; color: red;">ERROR 500</h1>
+        <img src="https://cdn-icons-png.flaticon.com/256/6478/6478111.png" alt="" style="transform: scale(0.8); margin-top: -60px;">
+        <p style="margin-top: -20px;">Error del servidor.....
+        </p>
+        <p style="margin-top: -10px;">
+            Intenta regresar a la pagina anterior o da clic al siguiente botón <hr>
+            <button onclick="regresar()" style="background-color: blue; width: 100px; height: 25px; border: none; color: white; border-radius: 10px; font-size: 16px; margin-top: -20px; cursor: pointer;">INICIO</button>
+        </p>
+    </div>
+</body>
+<script>
+    function regresar(){
+        window.location.href = "/"
+    }
+</script>
 </html>

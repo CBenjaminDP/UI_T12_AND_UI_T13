@@ -2,16 +2,16 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from .forms import CustomUserCreationForm, CustomUserLoginForm
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages  
-
+import json 
+from .message import message
 
 def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home') 
+           user = form.save()
+           login(request, user)
+           return redirect('home')
     else:
         form = CustomUserCreationForm()
     return render(request, 'register.html', {'form': form})
@@ -29,10 +29,10 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    messages.info(request, "Se ha cerrado sesión exitosamente.")  
+    msg = message("info", "Se a cerrado session exitosamente", 200, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MIbugIhZBykSmQcR0QPcfnPUBOZQ6bm35w&s")
+    return render(request, "login.html", {"message": 
+        json.dumps(msg.to_dict())})
 
-    return redirect('login')  
-
-@login_required  
-def home_view(request):  
+@login_required
+def home_view(request):
     return render(request, 'home.html')

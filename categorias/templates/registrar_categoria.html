@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Categoría</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f5;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        h2 {
+            color: #2e7d32;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #2e7d32;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #1b5e20;
+        }
+
+        .categoria-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .categoria-item {
+            background-color: #e0f7fa;
+            border: 1px solid #009688;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        .categoria-item img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Registrar Categoría</h2>
+
+        <!-- Formulario para registrar una nueva categoría -->
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrar</button>
+        </form>
+
+        <!-- Sección para mostrar las categorías registradas -->
+        <div class="categoria-list">
+            <h3>Categorías registradas:</h3>
+            {% if categorias %}
+            {% for categoria in categorias %}
+            <div class="categoria-item">
+                <strong>{{ categoria.nombre }}</strong>
+                <br>
+                <img src="{{ categoria.imagen }}" alt="Imagen de {{ categoria.nombre }}">
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No hay categorías registradas aún.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
